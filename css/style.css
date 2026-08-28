@@ -277,3 +277,134 @@ img {
     padding: 7rem 1.5rem 8rem;
   }
 }
+
+/* =========================================
+   6. SHARED SECTION HEADER
+   ========================================= */
+.section-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  letter-spacing: -0.01em;
+}
+
+/* =========================================
+   7. NEWS
+   ========================================= */
+.news {
+  padding: 4rem 0 5rem;
+}
+
+.news-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+
+.news-card {
+  background-color: var(--color-bg-card);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 147, 172, 0.12);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(47, 212, 232, 0.35);
+}
+
+.news-thumb {
+  aspect-ratio: 16 / 9;
+  background-repeat: no-repeat;
+}
+
+/* Three distinct gradient placeholders standing in for future photos/thumbnails */
+.news-thumb--1 {
+  background-image: linear-gradient(135deg, #123354, #2FD4E8 140%);
+}
+
+.news-thumb--2 {
+  background-image: linear-gradient(135deg, #0B1526, #3B6FA0 140%);
+}
+
+.news-thumb--3 {
+  background-image: linear-gradient(135deg, #101F38, #2FD4E8 160%);
+}
+
+.news-card-body {
+  padding: 1.5rem;
+}
+
+.news-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background-color: rgba(47, 212, 232, 0.1);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+
+.news-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin-bottom: 0.7rem;
+}
+
+.news-excerpt {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.news-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.news-link {
+  font-weight: 600;
+  color: var(--color-accent);
+  transition: opacity 0.2s ease;
+}
+
+.news-link:hover,
+.news-link:focus-visible {
+  opacity: 0.8;
+}
+
+@media (min-width: 700px) {
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
