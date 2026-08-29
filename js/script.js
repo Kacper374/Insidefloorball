@@ -16,3 +16,12 @@ navLinks.querySelectorAll('a').forEach((link) => {
     navToggle.setAttribute('aria-expanded', 'false');
   });
 });
+
+// Tips accordion
+document.querySelectorAll('.tip-header').forEach((header) => {
+  header.addEventListener('click', () => {
+    const tipItem = header.closest('.tip-item');
+    const isOpen = tipItem.classList.toggle('open');
+    header.setAttribute('aria-expanded', isOpen);
+  });
+});
