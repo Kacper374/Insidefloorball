@@ -593,3 +593,112 @@ img {
   font-size: 0.92rem;
   color: var(--color-text-muted);
 }
+
+/* =========================================
+   10. TIPS (accordion)
+   ========================================= */
+.tips {
+  padding: 1rem 0 5rem;
+}
+
+.tips-accordion {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.tip-item {
+  border-bottom: 1px solid rgba(124, 147, 172, 0.18);
+}
+
+.tip-item:first-child {
+  border-top: 1px solid rgba(124, 147, 172, 0.18);
+}
+
+.tip-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 1.4rem 0;
+  color: var(--color-text);
+}
+
+.tip-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--color-accent-soft);
+  min-width: 2.2rem;
+  transition: color 0.2s ease;
+}
+
+.tip-header[aria-expanded="true"] .tip-number {
+  color: var(--color-accent);
+}
+
+.tip-title {
+  flex: 1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.tip-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+}
+
+.tip-icon::before,
+.tip-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--color-accent);
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease;
+}
+
+.tip-icon::before {
+  width: 14px;
+  height: 2px;
+}
+
+.tip-icon::after {
+  width: 2px;
+  height: 14px;
+}
+
+/* Plus turns into a minus when the tip is open */
+.tip-header[aria-expanded="true"] .tip-icon::after {
+  transform: translate(-50%, -50%) rotate(90deg) scale(0);
+}
+
+/* Smooth expand/collapse without JS measuring the content height */
+.tip-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.tip-item.open .tip-panel {
+  grid-template-rows: 1fr;
+}
+
+.tip-panel > .tip-desc {
+  overflow: hidden;
+  font-size: 0.96rem;
+  color: var(--color-text-muted);
+  padding-right: 2rem;
+}
+
+.tip-item.open .tip-panel > .tip-desc {
+  padding-bottom: 1.4rem;
+}
