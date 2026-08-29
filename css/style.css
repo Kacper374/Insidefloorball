@@ -509,3 +509,87 @@ img {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* =========================================
+   9. CALENDAR
+   ========================================= */
+.calendar {
+  padding: 1rem 0 5rem;
+}
+
+.calendar-list {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  list-style: none;
+  position: relative;
+}
+
+/* Vertical connecting line running through the timeline */
+.calendar-list::before {
+  content: '';
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: calc(1.5rem + 34px);
+  width: 2px;
+  background-color: rgba(124, 147, 172, 0.2);
+}
+
+.calendar-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  position: relative;
+  padding-bottom: 2.25rem;
+}
+
+.calendar-item:last-child {
+  padding-bottom: 0;
+}
+
+.calendar-date {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: 12px;
+  background-color: var(--color-bg-card);
+  border: 1px solid rgba(47, 212, 232, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-month {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.calendar-day {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.calendar-info {
+  padding-top: 0.5rem;
+}
+
+.calendar-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.35rem;
+}
+
+.calendar-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
