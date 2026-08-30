@@ -107,22 +107,35 @@ img {
   color: var(--color-accent);
 }
 
-.ig-link {
-  display: none;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--color-bg);
-  background-color: var(--color-accent);
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.ig-link:hover,
-.ig-link:focus-visible {
+.nav-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  flex-shrink: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-social-icon:hover,
+.nav-social-icon:focus-visible {
   opacity: 0.85;
+  transform: translateY(-2px);
 }
 
 /* Hamburger button (mobile) */
@@ -186,10 +199,6 @@ img {
     position: static;
     background: none;
     padding: 0;
-  }
-
-  .ig-link {
-    display: inline-block;
   }
 }
 
