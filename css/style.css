@@ -885,3 +885,140 @@ img {
     align-self: center;
   }
 }
+
+/* =========================================
+   13. ABOUT + STATS
+   ========================================= */
+.about {
+  padding: 1rem 1.5rem 5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.about-text {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.about-desc {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+  text-align: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 700px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =========================================
+   14. WORK WITH US (Partners CTA)
+   ========================================= */
+.work-with-us {
+  max-width: 620px;
+  margin: 3.5rem auto 0;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background-color: var(--color-bg-card);
+  border: 1px solid rgba(47, 212, 232, 0.25);
+  border-radius: 14px;
+}
+
+.work-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.work-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.work-cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  transition: opacity 0.2s ease;
+}
+
+.work-cta:hover,
+.work-cta:focus-visible {
+  opacity: 0.85;
+}
+
+/* =========================================
+   15. FOOTER SOCIAL ICONS
+   ========================================= */
+.footer-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(124, 147, 172, 0.12);
+  color: var(--color-text-muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-icon:hover,
+.social-icon:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+@media (max-width: 767px) {
+  .footer-cta {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
