@@ -281,13 +281,6 @@ img {
   opacity: 0.9;
 }
 
-.hero-stats-preview {
-  margin-top: 1.75rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
-  color: var(--color-text-muted);
-}
-
 @media (min-width: 768px) {
   .hero {
     padding: 7rem 1.5rem 8rem;
@@ -825,16 +818,16 @@ img {
 .site-footer {
   border-top: 1px solid rgba(124, 147, 172, 0.15);
   background-color: var(--color-bg-card);
-  padding: 3rem 1.5rem 1.5rem;
+  padding: 3.5rem 1.5rem 2rem;
 }
 
 .footer-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
   border-bottom: 1px solid rgba(124, 147, 172, 0.15);
 }
 
@@ -845,19 +838,27 @@ img {
   max-width: 320px;
 }
 
+.footer-col-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
 .footer-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.5rem;
+  flex-direction: column;
+  gap: 0.75rem;
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .footer-links a {
-  color: var(--color-text-muted);
+  color: var(--color-text);
   transition: color 0.2s ease;
 }
 
@@ -891,19 +892,31 @@ img {
   color: var(--color-bg);
 }
 
-.footer-copy {
+.footer-bottom {
   max-width: var(--max-width);
-  margin: 1.5rem auto 0;
+  margin: 1.75rem auto 0;
+  text-align: center;
+}
+
+.footer-copy {
   font-size: 0.82rem;
   color: var(--color-text-muted);
-  text-align: center;
+}
+
+.footer-disclaimer {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  opacity: 0.75;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
 }
 
 @media (min-width: 768px) {
   .footer-inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
   }
 }
 
