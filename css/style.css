@@ -75,11 +75,21 @@ img {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.75rem;
   letter-spacing: 0.02em;
   color: var(--color-text);
+}
+
+.logo-img {
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .logo-dot {
