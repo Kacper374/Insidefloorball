@@ -86,8 +86,8 @@ img {
 
 .logo-img {
   display: block;
-  height: 40px;
-  width: 40px;
+  height: 48px;
+  width: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -115,6 +115,21 @@ img {
 .nav-links a:hover,
 .nav-links a:focus-visible {
   color: var(--color-accent);
+}
+
+.nav-links a.active {
+  color: var(--color-accent);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
 }
 
 .nav-right {
