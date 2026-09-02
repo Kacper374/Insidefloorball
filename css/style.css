@@ -59,7 +59,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(11, 21, 38, 0.95);
+  background-color: rgba(11, 21, 38, 0.9);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(124, 147, 172, 0.15);
 }
@@ -72,7 +72,6 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  position: relative;
 }
 
 .logo {
@@ -210,7 +209,6 @@ img {
   padding: 1.5rem;
   gap: 1.25rem;
   border-bottom: 1px solid rgba(124, 147, 172, 0.15);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
 /* =========================================
@@ -226,7 +224,6 @@ img {
     position: static;
     background: none;
     padding: 0;
-    box-shadow: none;
   }
 }
 
@@ -240,6 +237,9 @@ img {
   text-align: center;
 }
 
+/* Static background pattern: faint floorball rink lines
+   (center circle + a couple of arc lines), drawn with CSS gradients
+   so no image file is needed. */
 .hero-pattern {
   position: absolute;
   inset: 0;
@@ -356,6 +356,8 @@ img {
 }
 
 .news-card {
+  display: block;
+  cursor: pointer;
   background-color: var(--color-bg-card);
   border-radius: 14px;
   overflow: hidden;
@@ -363,27 +365,22 @@ img {
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.news-card:hover {
+.news-card:hover,
+.news-card:focus-visible {
   transform: translateY(-4px);
   border-color: rgba(47, 212, 232, 0.35);
 }
 
+/* Real post images now used instead of gradient placeholders.
+   aspect-ratio + object-fit force every thumbnail into the exact
+   same shape, no matter the original photo's size — this is what
+   stops the cards from looking "rozjechane". */
 .news-thumb {
-  aspect-ratio: 16 / 9;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.news-thumb--1 {
-  background-image: linear-gradient(135deg, #123354, #2FD4E8 140%);
-}
-
-.news-thumb--2 {
-  background-image: linear-gradient(135deg, #0B1526, #3B6FA0 140%);
-}
-
-.news-thumb--3 {
-  background-image: linear-gradient(135deg, #101F38, #2FD4E8 160%);
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top center;
+  background-color: var(--color-bg);
 }
 
 .news-card-body {
@@ -480,6 +477,7 @@ img {
   justify-content: center;
 }
 
+/* Four distinct gradient placeholders standing in for future video thumbnails */
 .highlight-thumb--1 {
   background-image: linear-gradient(135deg, #0B1526, #2FD4E8 150%);
 }
@@ -558,6 +556,7 @@ img {
   position: relative;
 }
 
+/* Vertical connecting line running through the timeline */
 .calendar-list::before {
   content: '';
   position: absolute;
@@ -708,10 +707,12 @@ img {
   height: 14px;
 }
 
+/* Plus turns into a minus when the tip is open */
 .tip-header[aria-expanded="true"] .tip-icon::after {
   transform: translate(-50%, -50%) rotate(90deg) scale(0);
 }
 
+/* Smooth expand/collapse without JS measuring the content height */
 .tip-panel {
   display: grid;
   grid-template-rows: 0fr;
@@ -770,6 +771,7 @@ img {
   border-color: rgba(47, 212, 232, 0.35);
 }
 
+/* Soft glow behind the logo, growing on hover */
 .partner-card::before {
   content: '';
   position: absolute;
@@ -796,6 +798,13 @@ img {
 .partner-tag {
   position: relative;
   z-index: 1;
+}
+
+.partner-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--color-accent);
 }
 
 .partner-logo-box {
@@ -826,206 +835,7 @@ img {
 }
 
 /* =========================================
-   12. ABOUT + STATS
-   ========================================= */
-.about {
-  padding: 1rem 1.5rem 5rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.about-text {
-  max-width: 680px;
-  margin: 0 auto 3rem;
-  text-align: center;
-}
-
-.about-desc {
-  margin-top: 1rem;
-  font-size: 1.05rem;
-  color: var(--color-text-muted);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem 1rem;
-  text-align: center;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 5vw, 2.75rem);
-  color: var(--color-accent);
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-@media (min-width: 700px) {
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* =========================================
-   13. CONTACT
-   ========================================= */
-.contact {
-  padding: 1rem 0 6rem;
-}
-
-.contact-card {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  background-color: var(--color-bg-card);
-  border: 1px solid rgba(124, 147, 172, 0.15);
-  border-radius: 14px;
-  padding: 2.5rem 1.5rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.contact-label {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-top: 1rem;
-}
-
-.contact-label:first-child {
-  margin-top: 0;
-}
-
-.contact-input {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  border: 1px solid rgba(124, 147, 172, 0.25);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  transition: border-color 0.2s ease;
-}
-
-.contact-input:focus {
-  outline: none;
-  border-color: var(--color-accent);
-}
-
-.contact-textarea {
-  resize: vertical;
-  font-family: var(--font-body);
-}
-
-.contact-submit {
-  margin-top: 1.5rem;
-  align-self: flex-start;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--color-bg);
-  background-color: var(--color-accent);
-  border: none;
-  cursor: pointer;
-  padding: 0.8rem 2.2rem;
-  border-radius: 999px;
-  transition: opacity 0.2s ease;
-}
-
-.contact-submit:hover,
-.contact-submit:focus-visible {
-  opacity: 0.85;
-}
-
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.75rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(124, 147, 172, 0.15);
-}
-
-.contact-info-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.contact-email {
-  color: var(--color-accent);
-  font-weight: 600;
-  word-break: break-all;
-}
-
-.contact-email:hover,
-.contact-email:focus-visible {
-  opacity: 0.85;
-}
-
-.contact-socials {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background-color: rgba(124, 147, 172, 0.12);
-  color: var(--color-text-muted);
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.social-icon:hover,
-.social-icon:focus-visible {
-  background-color: var(--color-accent);
-  color: var(--color-bg);
-}
-
-@media (min-width: 768px) {
-  .contact-card {
-    grid-template-columns: 1.4fr 1fr;
-    padding: 3rem;
-  }
-
-  .contact-info {
-    padding-top: 0;
-    padding-left: 2rem;
-    border-top: none;
-    border-left: 1px solid rgba(124, 147, 172, 0.15);
-  }
-}
-
-/* =========================================
-   14. FOOTER
+   12. FOOTER
    ========================================= */
 .site-footer {
   border-top: 1px solid rgba(124, 147, 172, 0.15);
@@ -1130,4 +940,325 @@ img {
   .footer-inner {
     grid-template-columns: 2fr 1fr 1fr 1fr;
   }
+}
+
+/* =========================================
+   13. ABOUT + STATS
+   ========================================= */
+.about {
+  padding: 1rem 1.5rem 5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.about-text {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.about-desc {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 1rem;
+  text-align: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (min-width: 700px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* =========================================
+   14. WORK WITH US (Partners CTA)
+   ========================================= */
+.work-with-us {
+  max-width: 620px;
+  margin: 3.5rem auto 0;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background-color: var(--color-bg-card);
+  border: 1px solid rgba(47, 212, 232, 0.25);
+  border-radius: 14px;
+}
+
+.work-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.work-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.work-cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  transition: opacity 0.2s ease;
+}
+
+.work-cta:hover,
+.work-cta:focus-visible {
+  opacity: 0.85;
+}
+
+/* =========================================
+   15. FOOTER SOCIAL ICONS
+   ========================================= */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(124, 147, 172, 0.12);
+  color: var(--color-text-muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-icon:hover,
+.social-icon:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* =========================================
+   16. CONTACT
+   ========================================= */
+.contact {
+  padding: 1rem 0 6rem;
+}
+
+.contact-card {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  background-color: var(--color-bg-card);
+  border: 1px solid rgba(124, 147, 172, 0.15);
+  border-radius: 14px;
+  padding: 2.5rem 1.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 1rem;
+}
+
+.contact-label:first-child {
+  margin-top: 0;
+}
+
+.contact-input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid rgba(124, 147, 172, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.contact-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.contact-textarea {
+  resize: vertical;
+  font-family: var(--font-body);
+}
+
+.contact-submit {
+  margin-top: 1.5rem;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem 2.2rem;
+  border-radius: 999px;
+  transition: opacity 0.2s ease;
+}
+
+.contact-submit:hover,
+.contact-submit:focus-visible {
+  opacity: 0.85;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(124, 147, 172, 0.15);
+}
+
+.contact-info-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.contact-email {
+  color: var(--color-accent);
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.contact-email:hover,
+.contact-email:focus-visible {
+  opacity: 0.85;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .contact-card {
+    grid-template-columns: 1.4fr 1fr;
+    padding: 3rem;
+  }
+
+  .contact-info {
+    padding-top: 0;
+    padding-left: 2rem;
+    border-top: none;
+    border-left: 1px solid rgba(124, 147, 172, 0.15);
+  }
+}
+
+/* =========================================
+   17. ARTICLE PAGE (single news article)
+   ========================================= */
+.article-page {
+  padding: 3rem 0 5rem;
+}
+
+.article-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  margin-bottom: 2rem;
+  transition: opacity 0.2s ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  opacity: 0.8;
+}
+
+.article-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  line-height: 1.15;
+  margin: 0.9rem 0 0.6rem;
+}
+
+.article-date {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.article-hero-img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 14px;
+  margin: 0 auto 2rem;
+}
+
+.article-body p {
+  font-size: 1.02rem;
+  color: var(--color-text);
+  margin-bottom: 1.1rem;
+  line-height: 1.75;
+}
+
+.article-readmore {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+  padding: 0.75rem 1.9rem;
+  border-radius: 999px;
+  margin-top: 0.75rem;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.article-readmore:hover,
+.article-readmore:focus-visible {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
