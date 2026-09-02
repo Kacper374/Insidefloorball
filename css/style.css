@@ -372,14 +372,13 @@ img {
 }
 
 /* Real post images now used instead of gradient placeholders.
-   aspect-ratio + object-fit force every thumbnail into the exact
-   same shape, no matter the original photo's size — this is what
-   stops the cards from looking "rozjechane". */
+   No aspect-ratio/object-fit here on purpose: these are designed
+   Instagram graphics with text baked into the image itself, so we
+   show them at their full natural size instead of cropping them. */
 .news-thumb {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
+  display: block;
   background-color: var(--color-bg);
 }
 
@@ -1261,4 +1260,105 @@ img {
 .article-readmore:focus-visible {
   transform: translateY(-2px);
   opacity: 0.9;
+}
+
+/* Heading used to separate each numbered highlight inside a listicle-style article */
+.article-subheading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  margin: 1.75rem 0 0.5rem;
+}
+
+.article-subheading:first-child {
+  margin-top: 0;
+}
+
+/* =========================================
+   18. IMAGE CAROUSEL (multi-photo articles)
+   ========================================= */
+.carousel {
+  position: relative;
+  max-width: 380px;
+  margin: 0 auto 1.25rem;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  border-radius: 14px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(11, 21, 38, 0.6);
+  border: 1.5px solid rgba(234, 242, 248, 0.6);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  backdrop-filter: blur(2px);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-btn:hover,
+.carousel-btn:focus-visible {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.carousel-btn--prev {
+  left: 0.6rem;
+}
+
+.carousel-btn--next {
+  right: 0.6rem;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(124, 147, 172, 0.35);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-dot.active {
+  background-color: var(--color-accent);
+  transform: scale(1.25);
 }
