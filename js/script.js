@@ -2,20 +2,22 @@
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
 
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  navToggle.classList.toggle('open', isOpen);
-  navToggle.setAttribute('aria-expanded', isOpen);
-});
-
-// Close menu when a link is clicked (mobile)
-navLinks.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen);
   });
-});
+
+  // Close menu when a link is clicked (mobile)
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 // Tips accordion
 document.querySelectorAll('.tip-header').forEach((header) => {
@@ -28,30 +30,33 @@ document.querySelectorAll('.tip-header').forEach((header) => {
 
 // Scrollspy: highlight the nav link for the section currently in view
 const sections = document.querySelectorAll('main section[id]');
-
-// Build a lookup so we can quickly find "the link for #news", etc.
 const navLinkMap = {};
-navLinks.querySelectorAll('a[href^="#"]').forEach((link) => {
-  const id = link.getAttribute('href').slice(1);
-  navLinkMap[id] = link;
-});
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      const link = navLinkMap[entry.target.id];
-      if (!link || !entry.isIntersecting) return;
+if (navLinks) {
+  navLinks.querySelectorAll('a[href^="#"]').forEach((link) => {
+    const id = link.getAttribute('href').slice(1);
+    if (id) {
+      navLinkMap[id] = link;
+    }
+  });
+}
 
-      // Clear the old active link, then mark the new one
-      Object.values(navLinkMap).forEach((l) => l.classList.remove('active'));
-      link.classList.add('active');
-    });
-  },
-  {
-    // Counts a section as "active" once it crosses the middle of the screen
-    rootMargin: '-40% 0px -55% 0px',
-    threshold: 0,
-  }
-);
+if (sections.length > 0) {
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const link = navLinkMap[entry.target.id];
+        if (!link || !entry.isIntersecting) return;
 
-sections.forEach((section) => sectionObserver.observe(section));
+        Object.values(navLinkMap).forEach((l) => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    },
+    {
+      rootMargin: '-30% 0px -60% 0px',
+      threshold: 0,
+    }
+  );
+
+  sections.forEach((section) => sectionObserver.observe(section));
+}
