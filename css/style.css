@@ -1141,6 +1141,19 @@ img {
   opacity: 0.85;
 }
 
+.contact-consent {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.contact-consent a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -1241,6 +1254,34 @@ img {
   color: var(--color-text);
   margin-bottom: 1.1rem;
   line-height: 1.75;
+}
+
+.article-body ul {
+  margin: 0 0 1.1rem 0;
+  padding-left: 1.3rem;
+  list-style: disc;
+}
+
+.article-body li {
+  font-size: 1.02rem;
+  color: var(--color-text);
+  line-height: 1.75;
+  margin-bottom: 0.4rem;
+}
+
+.article-body li::marker {
+  color: var(--color-accent);
+}
+
+.article-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.article-body a:hover,
+.article-body a:focus-visible {
+  opacity: 0.85;
 }
 
 .article-readmore {
