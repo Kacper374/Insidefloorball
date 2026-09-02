@@ -969,6 +969,12 @@ img {
   text-align: center;
 }
 
+/* With 5 stats, the last one is alone on mobile's 2-column grid —
+   center it full-width instead of leaving it stuck on the left */
+.stats-grid .stat-item:last-child {
+  grid-column: 1 / -1;
+}
+
 .stat-item {
   display: flex;
   flex-direction: column;
@@ -992,7 +998,11 @@ img {
 
 @media (min-width: 700px) {
   .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .stats-grid .stat-item:last-child {
+    grid-column: auto;
   }
 }
 
