@@ -1413,3 +1413,71 @@ img {
   background-color: var(--color-accent);
   transform: scale(1.25);
 }
+
+/* =========================================
+   19. 404 ERROR PAGE
+   ========================================= */
+.error-page {
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 1.5rem 7rem;
+  text-align: center;
+}
+
+.error-content {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.error-code {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(5rem, 18vw, 9rem);
+  line-height: 1;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.error-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  margin: 0.5rem 0 1rem;
+}
+
+.error-desc {
+  color: var(--color-text-muted);
+  font-size: 1.02rem;
+  margin-bottom: 2.25rem;
+}
+
+.error-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.75rem;
+  margin-top: 2.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.error-links a {
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.error-links a:hover,
+.error-links a:focus-visible {
+  color: var(--color-accent);
+}
+
+@media (min-width: 768px) {
+  .error-page {
+    padding: 8rem 1.5rem 9rem;
+  }
+}
