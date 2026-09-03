@@ -104,3 +104,43 @@ document.querySelectorAll('[data-carousel]').forEach((carousel) => {
     track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
   });
 });
+
+// Article share buttons: copy link + prefilled WhatsApp/X share links.
+// Uses window.location so it always points at wherever the page is
+// actually hosted — no hardcoded domain to update later.
+document.querySelectorAll('[data-share]').forEach((shareWidget) => {
+  const pageUrl = window.location.href;
+  const pageTitle = document.title;
+
+  const copyBtn = shareWidget.querySelector('[data-share-copy]');
+  const whatsappLink = shareWidget.querySelector('[data-share-whatsapp]');
+  const xLink = shareWidget.querySelector('[data-share-x]');
+
+  if (whatsappLink) {
+    whatsappLink.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(pageTitle + ' ' + pageUrl)}`;
+  }
+
+  if (xLink) {
+    xLink.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(pageTitle)}&url=${encodeURIComponent(pageUrl)}`;
+  }
+
+  if (copyBtn) {
+    const label = copyBtn.querySelector('.share-btn-label');
+    const originalLabel = label.textContent;
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        label.textContent = 'Copied!';
+        copyBtn.classList.add('share-btn--copied');
+      } catch (err) {
+        console.error('Copy failed', err);
+      }
+
+      setTimeout(() => {
+        label.textContent = originalLabel;
+        copyBtn.classList.remove('share-btn--copied');
+      }, 1800);
+    });
+  }
+});
