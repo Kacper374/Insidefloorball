@@ -1899,3 +1899,37 @@ img {
   visibility: visible;
   transform: translate(-50%, 0);
 }
+
+/* =========================================
+   26. LOGO FIX
+   Forces the logo to always render as a perfect 48px circle (40px on
+   small phones), no matter what — fixes it stretching into an oval
+   on some screen widths.
+   ========================================= */
+.logo {
+  flex-shrink: 0;
+}
+
+.logo-img {
+  display: block;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px;
+  min-height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@media (max-width: 420px) {
+  .logo-img {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+  }
+}
