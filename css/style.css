@@ -1933,3 +1933,196 @@ img {
     max-height: 40px;
   }
 }
+
+/* =========================================
+   18. HOMEPAGE RESTRUCTURE (Sep 2026 update)
+   Tighter hero, 3-stat summary, "see all news" link,
+   news page with calendar sidebar, highlights reels/best-goals,
+   dedicated partners page.
+   ========================================= */
+
+/* Tighter hero so the page content sits closer to the navbar */
+.hero--tight {
+  padding: 2.75rem 1.5rem 3rem;
+}
+
+@media (min-width: 768px) {
+  .hero--tight {
+    padding: 3.5rem 1.5rem 4rem;
+  }
+}
+
+.highlight-thumb {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Homepage stats band (no About text anymore, just the numbers) */
+.stats-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem 4.5rem;
+}
+
+.stats-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem 0.75rem;
+}
+
+.stats-grid--three .stat-item:last-child {
+  grid-column: auto;
+}
+
+@media (min-width: 600px) {
+  .stats-grid--three {
+    gap: 1.5rem;
+  }
+}
+
+.section-more {
+  max-width: var(--max-width);
+  margin: 2.25rem auto 0;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+/* News page: calendar sidebar + article grid */
+.news-page-layout {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .news-page-layout {
+    grid-template-columns: 260px 1fr;
+  }
+}
+
+.news-page-layout .news-grid {
+  padding: 0;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .news-page-layout .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.calendar-sidebar {
+  background-color: var(--color-bg-card);
+  border: 1px solid rgba(124, 147, 172, 0.15);
+  border-radius: 14px;
+  padding: 1.5rem 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .calendar-sidebar {
+    position: sticky;
+    top: 90px;
+  }
+}
+
+.calendar-sidebar-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.calendar-sidebar-note {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+}
+
+.calendar-sidebar-note a {
+  color: var(--color-accent);
+}
+
+.calendar-sidebar .calendar-list {
+  gap: 1.1rem;
+}
+
+.calendar-sidebar .calendar-item {
+  display: flex;
+  gap: 0.85rem;
+  padding-left: 0;
+  transition: opacity 0.2s ease;
+}
+
+.calendar-sidebar .calendar-item:hover {
+  opacity: 0.8;
+}
+
+.calendar-sidebar .calendar-title {
+  font-size: 1rem;
+}
+
+.calendar-sidebar .calendar-desc {
+  font-size: 0.85rem;
+}
+
+/* Highlights page: Instagram reels grid */
+.reels-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  justify-items: center;
+}
+
+@media (min-width: 640px) {
+  .reels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .reels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.reels-grid .instagram-media {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.highlights-subhead {
+  max-width: var(--max-width);
+  margin: 5rem auto 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.highlights-note {
+  max-width: var(--max-width);
+  margin: 0 auto 2.5rem;
+  padding: 0 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Partners page */
+.partners-page-note {
+  max-width: var(--max-width);
+  margin: -1.5rem auto 3rem;
+  padding: 0 1.5rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+.partner-contact-intro {
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+}
