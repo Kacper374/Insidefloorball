@@ -2126,3 +2126,18 @@ img {
   margin: 0 auto 2rem;
   padding: 0 1.5rem;
 }
+
+/* Branded frame around each native Instagram reel embed */
+.reel-card {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 147, 172, 0.18);
+  background-color: var(--color-bg-card);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.reel-card .instagram-media {
+  border-radius: 0 !important;
+  border: 0 !important;
+}
