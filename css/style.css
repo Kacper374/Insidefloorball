@@ -2147,7 +2147,10 @@ img {
 
 /* Share row under each reel, reusing the same look as the article share
    buttons, just tighter to fit under a narrow reel card. */
+/* Wiersz udostępniania pod każdym reelsem - mniejsze przyciski obok siebie,
+   ciasno pod belką Instagrama, zamiast dużych, rozciągniętych na całą szerokość */
 .reel-card .article-share {
+  margin-top: 0;
   padding: 0.85rem 1rem 1rem;
   border-top: 1px solid rgba(124, 147, 172, 0.15);
 }
@@ -2158,4 +2161,17 @@ img {
 
 .reel-card .article-share-buttons {
   justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+.reel-card .share-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  gap: 0.35rem;
+}
+
+.reel-card .share-btn svg {
+  width: 14px;
+  height: 14px;
 }
