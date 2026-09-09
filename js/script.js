@@ -63,6 +63,19 @@ const sectionObserver = new IntersectionObserver(
 sections.forEach((section) => sectionObserver.observe(section));
 
 // ============================================================
+// Active nav link per page (the site is now split across several
+// pages — index.html, news.html, highlights.html, partners.html —
+// so each <body data-page="..."> marks which nav link should be lit
+// up, instead of relying only on same-page scroll position.
+// ============================================================
+const currentPage = document.body.dataset.page;
+if (currentPage) {
+  navLinks.querySelectorAll(`a[data-page="${currentPage}"]`).forEach((link) => {
+    link.classList.add('active');
+  });
+}
+
+// ============================================================
 // Image carousels on article pages (posts with several photos to swipe through)
 // ============================================================
 document.querySelectorAll('[data-carousel]').forEach((carousel) => {
@@ -174,10 +187,10 @@ function showToast(message) {
 // object below with its title, tag, url and content.
 const SEARCH_INDEX = [
   {
-    title: 'About — What is inside.?',
-    tag: 'About',
-    url: 'index.html#about',
-    content: "inside. is a floorball media brand built for fans who want more than just scores — daily news, match highlights, tournament calendars and educational content, reaching a fast-growing floorball community across Instagram, TikTok, YouTube and Facebook. 17.5K Instagram followers, 3.8K Facebook followers, 4.9K TikTok followers, 2.79K YouTube subscribers, 914+ videos published.",
+    title: 'insidefloorball — biggest worldwide floorball media account',
+    tag: 'insidefloorball',
+    url: 'index.html',
+    content: "News, highlights, tournament breakdowns and stories shaping the sport. All in one place, updated daily and covering WFC, SSL, Fliiga, Česká Superliga and Premier League. 29K+ follower base, 3M+ views per month, 100K+ interactions per month.",
   },
   {
     title: 'Northern Conference quarterfinals wrap up as Champions Cup kicks off',
@@ -198,100 +211,58 @@ const SEARCH_INDEX = [
     content: "The IFF's 2026 Rules of the Game took effect on 1 July, with the headline changes built around goalkeeper safety. Field players must now make a genuine effort to avoid crashing into the goalkeeper, can no longer cut through the goal area, and are barred from blocking a keeper's view by trailing them around the crease. The changes are designed to reduce dangerous collisions in and around the crease while keeping the pace of the modern game intact.",
   },
   {
-    title: 'SSL Recap 2025/26 — Round 1',
-    tag: 'SSL',
-    url: 'index.html#highlights',
-    content: 'Highlights video recapping the opening round of the SSL season, 4 minutes 12 seconds.',
+    title: 'Latest reels from Instagram',
+    tag: 'Highlights',
+    url: 'highlights.html',
+    content: 'The newest reels from @inside.floorball, embedded straight from Instagram.',
   },
   {
-    title: 'WFC 2024 — Best Goals',
-    tag: 'WFC',
-    url: 'index.html#highlights',
-    content: 'Highlights video with the best goals from the World Floorball Championship 2024, 6 minutes 30 seconds.',
-  },
-  {
-    title: 'Czech Extraliga — Opening Weekend',
-    tag: 'Extraliga',
-    url: 'index.html#highlights',
-    content: 'Highlights video from the opening weekend of the Czech Extraliga season, 3 minutes 45 seconds.',
-  },
-  {
-    title: 'U19 WFC — Final Highlights',
-    tag: 'U19 WFC',
-    url: 'index.html#highlights',
-    content: 'Highlights video from the final of the U19 World Floorball Championship, 5 minutes 2 seconds.',
+    title: 'Best Goals',
+    tag: 'Highlights · YouTube',
+    url: 'highlights.html',
+    content: 'The best floorball goals from around the world, pulled from the inside. YouTube channel: SSL, WFC, Czech Extraliga and U19 WFC.',
   },
   {
     title: 'Czech Open 2026',
     tag: 'Calendar · Sep 06',
-    url: 'index.html#calendar',
+    url: 'news.html',
     content: 'Season-opening international tournament in the Czech Republic.',
   },
   {
     title: 'Extraliga — Round 3',
     tag: 'Calendar · Sep 19',
-    url: 'index.html#calendar',
+    url: 'news.html',
     content: 'Czech top-flight action continues across all twelve clubs.',
   },
   {
     title: 'U19 World Floorball Championship',
     tag: 'Calendar · Oct 10',
-    url: 'index.html#calendar',
+    url: 'news.html',
     content: 'The next generation competes on the international stage.',
   },
   {
     title: 'WFC 2026 Draw',
     tag: 'Calendar · Dec 02',
-    url: 'index.html#calendar',
+    url: 'news.html',
     content: "Group stage draw for next year's World Floorball Championship.",
-  },
-  {
-    title: 'Master the low grip for quick release',
-    tag: 'Tips',
-    url: 'index.html#tips',
-    content: 'A lower grip on the stick gives you a faster, more compact shot — harder for goalkeepers to read and react to in time.',
-  },
-  {
-    title: 'Communicate constantly on the floor',
-    tag: 'Tips',
-    url: 'index.html#tips',
-    content: 'Calling for the ball, flagging switches and marking runs out loud keeps the whole line in sync during fast play.',
-  },
-  {
-    title: 'Line changes can win games',
-    tag: 'Tips',
-    url: 'index.html#tips',
-    content: 'Smart substitution timing keeps legs fresh and lets you exploit a tired opposing line late in each period.',
-  },
-  {
-    title: 'Read the game, not just the ball',
-    tag: 'Tips',
-    url: 'index.html#tips',
-    content: 'Watching player positioning and space instead of only the ball helps you anticipate plays a full step earlier.',
-  },
-  {
-    title: 'Recovery matters as much as training',
-    tag: 'Tips',
-    url: 'index.html#tips',
-    content: "Sleep, stretching and rest days aren't optional extras — they're what let your training actually translate into form.",
   },
   {
     title: 'Partners — floorballshop.com',
     tag: 'Main Partner',
-    url: 'index.html#partners',
+    url: 'partners.html',
     content: 'floorballshop.com, main partner of inside. floorball.',
   },
   {
     title: 'Partners — Český florbal',
     tag: 'Federation Partner',
-    url: 'index.html#partners',
+    url: 'partners.html',
     content: 'Český florbal, the Czech floorball federation, federation partner of inside. floorball.',
   },
   {
-    title: 'Contact inside. floorball',
+    title: 'Become a partner / Contact inside. floorball',
     tag: 'Contact',
-    url: 'index.html#contact',
-    content: 'Get in touch with inside. floorball by email or through Instagram, Facebook, YouTube and TikTok.',
+    url: 'partners.html#partner-contact',
+    content: 'Want to partner with inside. floorball? Get in touch by email or through the contact form, or reach out on Instagram, Facebook, YouTube and TikTok.',
   },
   {
     title: 'Privacy Policy',
