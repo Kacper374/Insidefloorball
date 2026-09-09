@@ -559,8 +559,16 @@ function initArticleShare() {
   }
 
   shareWidgets.forEach((shareWidget) => {
-    const pageUrl = window.location.href;
-    const pageTitle = document.title;
+    // For reel-card share widgets, share the reel's own Instagram link
+    // (read straight off the embed next to it) instead of this page's URL —
+    // that way there's only one link to keep up to date per reel.
+    const siblingReel = shareWidget.parentElement
+      ? shareWidget.parentElement.querySelector('.instagram-media[data-instgrm-permalink]')
+      : null;
+    const reelUrl = siblingReel ? siblingReel.getAttribute('data-instgrm-permalink') : null;
+
+    const pageUrl = reelUrl || window.location.href;
+    const pageTitle = reelUrl ? 'Check out this goal — inside. floorball' : document.title;
 
     const copyBtn = shareWidget.querySelector('[data-share-copy]');
     const moreBtn = shareWidget.querySelector('[data-share-more]');
