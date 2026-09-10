@@ -600,3 +600,48 @@ function initArticleShare() {
 }
 
 initArticleShare();
+
+// ============================================================
+// Odtwarzanie filmów YouTube w sekcji "Best Goals" po kliknięciu
+// w miniaturkę — film wczytuje się dopiero wtedy (szybsze ładowanie
+// strony niż osadzanie od razu kilku odtwarzaczy naraz).
+// ============================================================
+function initYoutubeFacade() {
+  const cards = document.querySelectorAll('.highlight-card[data-video-id]');
+
+  cards.forEach((card) => {
+    const thumb = card.querySelector('.highlight-thumb');
+    const videoId = card.dataset.videoId;
+    if (!thumb || !videoId) return;
+
+    thumb.setAttribute('role', 'button');
+    thumb.setAttribute('tabindex', '0');
+    thumb.setAttribute('aria-label', 'Odtwórz film');
+
+    const playVideo = () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      iframe.title = card.querySelector('.news-title')?.textContent || 'Film z YouTube';
+      iframe.frameBorder = '0';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      thumb.innerHTML = '';
+      thumb.style.backgroundImage = 'none';
+      thumb.appendChild(iframe);
+    };
+
+    thumb.addEventListener('click', playVideo, { once: true });
+    thumb.addEventListener(
+      'keydown',
+      (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          playVideo();
+        }
+      },
+      { once: true }
+    );
+  });
+}
+
+initYoutubeFacade();
