@@ -292,10 +292,21 @@
       "best goals" video — the thumbnail and link update automatically.
     </p>
 
+    <!--
+      JAK PODMIENIAĆ FILMY "BEST GOALS" (bez kodowania):
+      1. Otwórz film na youtube.com i skopiuj jego ID z adresu URL — to ciąg
+         znaków po "v=", np. dla youtube.com/watch?v=dQw4w9WgXcQ ID to
+         "dQw4w9WgXcQ".
+      2. Podmień PLACEHOLDER1, PLACEHOLDER2 itd. poniżej (są w dwóch
+         miejscach na kartę: w miniaturce i w data-video-id) na to ID.
+      Miniaturka wczytuje się od razu (za darmo, z img.youtube.com), a sam
+      film odtwarza się dopiero po kliknięciu — dzięki temu strona ładuje
+      się szybko, mimo że jest tu kilka filmów naraz.
+    -->
     <section class="highlights">
       <div class="highlights-grid">
 
-        <a class="highlight-card" href="https://www.youtube.com/watch?v=PLACEHOLDER1" target="_blank" rel="noopener">
+        <div class="highlight-card" data-video-id="PLACEHOLDER1">
           <div class="highlight-thumb" style="background-image:url('https://img.youtube.com/vi/PLACEHOLDER1/hqdefault.jpg');">
             <span class="play-button" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -305,9 +316,9 @@
             <span class="news-tag">SSL</span>
             <h3 class="news-title">SSL Best Goals — Round 1</h3>
           </div>
-        </a>
+        </div>
 
-        <a class="highlight-card" href="https://www.youtube.com/watch?v=PLACEHOLDER2" target="_blank" rel="noopener">
+        <div class="highlight-card" data-video-id="PLACEHOLDER2">
           <div class="highlight-thumb" style="background-image:url('https://img.youtube.com/vi/PLACEHOLDER2/hqdefault.jpg');">
             <span class="play-button" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -317,9 +328,9 @@
             <span class="news-tag">WFC</span>
             <h3 class="news-title">WFC 2024 — Best Goals</h3>
           </div>
-        </a>
+        </div>
 
-        <a class="highlight-card" href="https://www.youtube.com/watch?v=PLACEHOLDER3" target="_blank" rel="noopener">
+        <div class="highlight-card" data-video-id="PLACEHOLDER3">
           <div class="highlight-thumb" style="background-image:url('https://img.youtube.com/vi/PLACEHOLDER3/hqdefault.jpg');">
             <span class="play-button" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -329,9 +340,9 @@
             <span class="news-tag">Extraliga</span>
             <h3 class="news-title">Czech Extraliga — Opening Weekend</h3>
           </div>
-        </a>
+        </div>
 
-        <a class="highlight-card" href="https://www.youtube.com/watch?v=PLACEHOLDER4" target="_blank" rel="noopener">
+        <div class="highlight-card" data-video-id="PLACEHOLDER4">
           <div class="highlight-thumb" style="background-image:url('https://img.youtube.com/vi/PLACEHOLDER4/hqdefault.jpg');">
             <span class="play-button" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -341,7 +352,7 @@
             <span class="news-tag">U19 WFC</span>
             <h3 class="news-title">U19 WFC — Final Highlights</h3>
           </div>
-        </a>
+        </div>
 
       </div>
     </section>
