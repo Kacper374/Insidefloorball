@@ -1975,6 +1975,17 @@ img {
   gap: 1.25rem 0.75rem;
 }
 
+@media (max-width: 420px) {
+  .stats-grid--three {
+    gap: 1rem 0.4rem;
+  }
+
+  .stats-grid--three .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+}
+
 .stats-grid--three .stat-item:last-child {
   grid-column: auto;
 }
