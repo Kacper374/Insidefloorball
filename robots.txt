@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-Sitemap: https://kacper374.github.io/Insidefloorball/sitemap.xml
+Sitemap: https://insidefloorball.com/sitemap.xml
