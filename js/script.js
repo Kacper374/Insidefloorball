@@ -211,6 +211,12 @@ const SEARCH_INDEX = [
     content: "The IFF's 2026 Rules of the Game took effect on 1 July, with the headline changes built around goalkeeper safety. Field players must now make a genuine effort to avoid crashing into the goalkeeper, can no longer cut through the goal area, and are barred from blocking a keeper's view by trailing them around the crease. The changes are designed to reduce dangerous collisions in and around the crease while keeping the pace of the modern game intact.",
   },
   {
+    title: 'Studio — commentary videos',
+    tag: 'Studio',
+    url: 'studio.html',
+    content: 'Commentary videos about the floorball world, straight from inside. — EFT, Goalie Suit, VAR and more.',
+  },
+  {
     title: 'Latest reels from Instagram',
     tag: 'Highlights',
     url: 'highlights.html',
