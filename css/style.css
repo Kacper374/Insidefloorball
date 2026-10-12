@@ -2266,3 +2266,75 @@ img {
   width: 14px;
   height: 14px;
 }
+
+/* =========================================
+   Home hero: logo above the title, tagline under it
+   ========================================= */
+.hero-logo {
+  display: block;
+  height: 84px;
+  width: auto;
+  margin: 0 auto 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .hero-logo {
+    height: 104px;
+  }
+}
+
+.hero-title--tight {
+  margin-bottom: 0.6rem;
+}
+
+.hero-eyebrow--under {
+  margin-bottom: 1.4rem;
+}
+
+/* =========================================
+   Detailed stats row (shown under the 3 main stats once enabled in index.html)
+   ========================================= */
+.stats-detail {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem 4.5rem;
+}
+
+.stats-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .stats-detail-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  background-color: var(--color-bg-card);
+  border: 1px solid rgba(59, 111, 160, 0.25);
+  border-radius: 12px;
+}
+
+.stat-card-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.stat-card-label {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
