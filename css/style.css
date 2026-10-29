@@ -2523,3 +2523,54 @@ body[data-page="home"] .hero-text:last-child {
   font-weight: 600;
   color: var(--color-accent);
 }
+
+/* =========================================
+   Partners page: "Trusted by" under the text + pyramid layout
+   ========================================= */
+.hero-eyebrow--last {
+  margin-bottom: 0;
+}
+
+.partners-pyramid {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.partners-tier {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 600px) {
+  .partners-tier--second {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.partners-tier--main {
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.partner-card--main {
+  padding: 3rem 1.5rem;
+  border-color: rgba(47, 212, 232, 0.35);
+}
+
+.partner-card--main .partner-logo-box {
+  width: 240px;
+  height: 110px;
+}
+
+.partner-card--main .partner-tag {
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
