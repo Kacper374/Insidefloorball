@@ -77,32 +77,58 @@
     <section class="hero hero--tight">
       <div class="hero-pattern" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="hero-eyebrow">Trusted by</p>
         <h1 class="hero-title">Partners</h1>
         <p class="hero-text">
           The brands and federations working with inside. to grow floorball
           worldwide.
         </p>
+        <p class="hero-eyebrow hero-eyebrow--last">Trusted by</p>
       </div>
     </section>
 
     <section id="partners" class="partners">
-      <div class="partners-grid">
+      <div class="partners-pyramid">
 
-        <!-- Swap floorballshop.png for the new transparent-background logo Kacper's colleague is sending — same filename, so no code changes needed. -->
-        <a href="https://www.floorballshop.com" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-box">
-            <img src="images/partners/floorballshop.png" alt="floorballshop.com logo" class="partner-logo" />
-          </div>
-          <span class="partner-tag">Main Partner</span>
-        </a>
+        <!-- GÓRA PIRAMIDY: Main Partner -->
+        <div class="partners-tier partners-tier--main">
+          <!-- Swap floorballshop.png for the new transparent-background logo — same filename, so no code changes needed. -->
+          <a href="https://www.floorballshop.com" target="_blank" rel="noopener" class="partner-card partner-card--main">
+            <div class="partner-logo-box">
+              <img src="images/partners/floorballshop.png" alt="floorballshop.com logo" class="partner-logo" />
+            </div>
+            <span class="partner-tag">Main Partner</span>
+          </a>
+        </div>
 
-        <a href="https://www.instagram.com/ceskyflorbal" target="_blank" rel="noopener" class="partner-card">
-          <div class="partner-logo-box">
-            <img src="images/partners/ceskyflorbal.png" alt="Český florbal logo" class="partner-logo" />
+        <!-- DÓŁ PIRAMIDY: dwóch pozostałych partnerów -->
+        <div class="partners-tier partners-tier--second">
+          <a href="https://www.ceskyflorbal.cz/" target="_blank" rel="noopener" class="partner-card">
+            <div class="partner-logo-box">
+              <img src="images/partners/ceskyflorbal.png" alt="Český florbal logo" class="partner-logo" />
+            </div>
+            <span class="partner-tag">Český florbal - Federation</span>
+          </a>
+
+          <!--
+            PLAYMAKERZ — na razie sam napis, bo nie ma jeszcze logo.
+            Gdy dostaniesz logo:
+            1. Wgraj je do repo jako images/partners/playmakerz.png
+            2. Podmień cały poniższy blok <div class="partner-card">...</div>
+               na taki (wstaw prawdziwy adres strony w href):
+               <a href="https://ADRES-PLAYMAKERZ" target="_blank" rel="noopener" class="partner-card">
+                 <div class="partner-logo-box">
+                   <img src="images/partners/playmakerz.png" alt="Playmakerz logo" class="partner-logo" />
+                 </div>
+                 <span class="partner-tag">Partner</span>
+               </a>
+          -->
+          <div class="partner-card">
+            <div class="partner-logo-box">
+              <span class="partner-name">Playmakerz</span>
+            </div>
+            <span class="partner-tag">Partner</span>
           </div>
-          <span class="partner-tag">Federation Partner</span>
-        </a>
+        </div>
 
       </div>
     </section>
